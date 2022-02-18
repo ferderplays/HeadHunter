@@ -220,5 +220,7 @@ public class HeadHunter {
         connection.setRequestMethod("POST");
         output = connection.getOutputStream();
         output.write(file.getBytes(StandardCharsets.UTF_8));
+        output.close();
+        connection.disconnect();
     }
 }
